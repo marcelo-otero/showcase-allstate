@@ -93,8 +93,8 @@ function executeClassifyClaim(params: {
   if (text.includes("dent") || text.includes("scratch") || text.includes("minor"))
     severityScore += 0;
 
-  if (severityScore >= 5) severity = "critical";
-  else if (severityScore >= 3) severity = "high";
+  if (severityScore >= 7) severity = "critical";
+  else if (severityScore >= 4) severity = "high";
   else if (severityScore >= 1) severity = "medium";
   else severity = "low";
 
