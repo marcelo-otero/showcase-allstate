@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { PostHogProvider } from "@/components/posthog-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -63,7 +64,9 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PostHogProvider>{children}</PostHogProvider>
+        </main>
 
         <footer className="border-t border-border py-4">
           <div className="max-w-6xl mx-auto px-4 text-center text-sm text-muted-foreground">

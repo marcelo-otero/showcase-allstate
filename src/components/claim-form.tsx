@@ -15,6 +15,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { samplePolicies } from "@/lib/data/sample-policies";
 import { sampleClaims } from "@/lib/data/sample-claims";
+import { trackEvent } from "@/components/posthog-provider";
 
 interface ClaimFormProps {
   onSubmit: (claim: {
@@ -37,6 +38,11 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!claimantName || !policyId || !dateOfIncident || !description) return;
+    trackEvent("claim_submitted", {
+      claimType: claimType || "not_specified",
+      policyId,
+      hasDescription: description.length > 0,
+    });
     onSubmit({ claimantName, policyId, claimType, dateOfIncident, description });
   };
 
@@ -44,6 +50,11 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
     if (!claimId) return;
     const claim = sampleClaims.find((c) => c.id === claimId);
     if (!claim) return;
+    trackEvent("sample_claim_loaded", {
+      claimId: claim.id,
+      claimType: claim.claimType,
+      expectedSeverity: claim.expectedSeverity,
+    });
     setClaimantName(claim.claimantName);
     setPolicyId(claim.policyId);
     setClaimType(claim.claimType);
