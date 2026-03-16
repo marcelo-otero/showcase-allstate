@@ -41,6 +41,14 @@ I ran 16 sample claims (auto, home, liability) through the system. Here's what c
 
 The sample claims include edge cases: fraud indicators (new policy + total loss claim at a cousin's shop), expired policies (automatic deny), ambiguous coverage (foundation damage), and multi-party incidents.
 
+## Non-Goals (v1)
+
+- No real PII or customer data handling
+- No authentication or role-based access
+- No integration with real claims management systems (Guidewire, Duck Creek)
+- No automated claim settlement (triage and recommendation only)
+- No multi-turn conversation (single claim submission per triage)
+
 ## Key Technical Decisions
 
 - **Streaming tool-use over prompt chaining.** The agent decides tool order autonomously. If the policy is expired, it skips fraud assessment and goes straight to denial. That's closer to how a real adjuster thinks.
