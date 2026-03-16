@@ -93,7 +93,7 @@ export default function RootLayout({
 
         <footer className="bg-[#0e1941] py-5">
           <div className="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/50">
-            <span>Built by Marcelo Otero</span>
+            <a href="https://www.linkedin.com/in/marcelo-otero/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">Built by Marcelo Otero</a>
             <span>Powered by Claude API</span>
           </div>
         </footer>
