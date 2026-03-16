@@ -4,7 +4,7 @@
 
 Claims triage at large P&C carriers is slow, inconsistent, and expensive. When a customer files a First Notice of Loss (FNOL), the claim enters a manual triage process where it must be classified by type and severity, verified against the policy, screened for fraud indicators, and routed to the right adjuster. This process typically takes 24 to 48 hours for initial triage alone, and misrouted claims add 5 to 10 days to total cycle time.
 
-The cost is significant. Allstate processes approximately 4 million claims per year. Loss Adjustment Expense (LAE) ratios for top carriers run 10 to 12% of incurred losses. Even small improvements in triage speed and accuracy compound at this scale: fewer misrouted claims, earlier fraud detection, faster time-to-settlement, and lower operational cost per claim.
+The cost is significant. Allstate processes approximately 8.4 million claims per year. Loss Adjustment Expense (LAE) ratios for top carriers run 10 to 12% of incurred losses. Even small improvements in triage speed and accuracy compound at this scale: fewer misrouted claims, earlier fraud detection, faster time-to-settlement, and lower operational cost per claim.
 
 Current approaches to AI in claims focus on downstream tasks (damage estimation from photos, customer communication drafting). The triage step, where a claim first gets classified, verified, and routed, remains largely manual.
 

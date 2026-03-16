@@ -211,13 +211,13 @@ export default function HomePage() {
             classified, the policy verified, fraud indicators checked, and the
             claim routed to the right adjuster. That process typically takes
             24 to 48 hours, and misrouted claims add 5 to 10 days on top of
-            that. Allstate processes around 4 million claims a year, so even
+            that. Allstate processes around 8.4 million claims a year, so even
             small improvements at this stage save real money.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <MetricCard value="24-48 hrs" label="Current triage time" />
-          <MetricCard value="~4M / year" label="Allstate claim volume" />
+          <MetricCard value="~8.4M / year" label="Allstate claim volume" />
           <MetricCard value="10-12%" label="Loss adjustment expense" />
         </div>
       </section>
@@ -331,7 +331,7 @@ export default function HomePage() {
           />
           <JdCard
             requirement="Problem Framing"
-            feature="Problem statement grounded in industry data: 24-48 hour triage, 5-10 day misroute delays, ~4M claims/year."
+            feature="Problem statement grounded in industry data: 24-48 hour triage, 5-10 day misroute delays, ~8.4M claims/year."
             fit="I started with the numbers, not a vague idea. The problem statement connects directly to measurable outcomes."
           />
           <JdCard

@@ -6,7 +6,7 @@ AI-powered insurance claims triage that classifies, verifies coverage, screens f
 
 When a customer files a First Notice of Loss, the claim has to be classified, the policy verified, fraud indicators checked, and the claim routed to the right adjuster. That process typically takes 24 to 48 hours, and misrouted claims add 5 to 10 more days on top of that.
 
-Allstate processes around 4 million claims a year. Loss adjustment expense runs 10 to 12% of incurred losses for top carriers. Even small improvements at the triage stage save real money.
+Allstate processes around 8.4 million claims a year. Loss adjustment expense runs 10 to 12% of incurred losses for top carriers. Even small improvements at the triage stage save real money.
 
 ## The Approach
 

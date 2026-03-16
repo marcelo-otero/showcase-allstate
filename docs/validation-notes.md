@@ -37,7 +37,7 @@ The project addresses a real, measurable pain point in P&C claims operations. Th
 ### Real metrics to reference
 - Industry average initial triage: 24-48 hours
 - Misrouted claims add 5-10 days to cycle time
-- Allstate processes ~4M claims/year
+- Allstate processes ~8.4M claims/year
 - Target: 40% reduction in initial triage time
 - Target: reduce misrouted claims through early coverage verification
 - LAE ratio for top carriers: 10-12%
