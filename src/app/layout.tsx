@@ -54,6 +54,9 @@ export default function RootLayout({
               <span className="font-semibold text-[15px] tracking-tight text-white">
                 ClaimPilot
               </span>
+              <span className="text-[9px] font-medium tracking-wide uppercase text-[#45bce5] border border-[#45bce5]/30 rounded px-1.5 py-0.5 leading-none bg-[#45bce5]/10">
+                Showcase Project
+              </span>
             </Link>
             <nav className="flex items-center gap-1">
               <Link
@@ -68,6 +71,12 @@ export default function RootLayout({
               >
                 Dashboard
               </Link>
+              <Link
+                href="/about"
+                className="px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all"
+              >
+                About
+              </Link>
             </nav>
           </div>
         </header>
@@ -77,9 +86,14 @@ export default function RootLayout({
         </main>
 
         <footer className="bg-[#0e1941] py-5">
-          <div className="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/50">
-            <a href="https://www.linkedin.com/in/marcelo-otero/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">Built by Marcelo Otero</a>
-            <span>Powered by Claude API</span>
+          <div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-2 text-xs text-white/50">
+            <div className="w-full flex items-center justify-between">
+              <a href="https://www.linkedin.com/in/marcelo-otero/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">Built by Marcelo Otero</a>
+              <span>Powered by Claude API</span>
+            </div>
+            <p className="text-white/30 text-[10px]">
+              Independent portfolio project. Not affiliated with or endorsed by Allstate.
+            </p>
           </div>
         </footer>
       </body>

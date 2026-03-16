@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 1160" width="860" height="1160" font-family="'Geist', 'Segoe UI', system-ui, -apple-system, sans-serif">
+  <rect width="860" height="1160" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="430" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#1a1a2e">ClaimPilot Agent Workflow</text>
+
+  <!-- Legend -->
+  <rect x="30" y="60" width="14" height="14" rx="2" fill="#d0ebff" stroke="#1971c2"/>
+  <text x="50" y="72" font-size="11" fill="#444">UI Layer</text>
+  <rect x="120" y="60" width="14" height="14" rx="2" fill="#fff3bf" stroke="#e67700"/>
+  <text x="140" y="72" font-size="11" fill="#444">Agent / Decisions</text>
+  <rect x="270" y="60" width="14" height="14" rx="2" fill="#d8f5a2" stroke="#2f9e44"/>
+  <text x="290" y="72" font-size="11" fill="#444">Agent Tools</text>
+  <rect x="380" y="60" width="14" height="14" rx="2" fill="#dee2e6" stroke="#495057"/>
+  <text x="400" y="72" font-size="11" fill="#444">Data Layer</text>
+
+  <!-- User Submits FNOL -->
+  <rect x="310" y="95" width="240" height="50" rx="8" fill="#d0ebff" stroke="#1971c2" stroke-width="2"/>
+  <text x="430" y="125" text-anchor="middle" font-size="13" font-weight="600" fill="#1971c2">User Submits FNOL Claim</text>
+
+  <!-- Arrow -->
+  <line x1="430" y1="145" x2="430" y2="175" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Intake Form -->
+  <rect x="310" y="175" width="240" height="50" rx="8" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <text x="430" y="200" text-anchor="middle" font-size="13" font-weight="600" fill="#1971c2">Intake Form</text>
+  <text x="430" y="215" text-anchor="middle" font-size="10" fill="#4a7ab5">(name, policy, description)</text>
+
+  <!-- Arrow -->
+  <line x1="430" y1="225" x2="430" y2="255" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Claude Agent -->
+  <rect x="300" y="255" width="260" height="50" rx="8" fill="#fff3bf" stroke="#e67700" stroke-width="2"/>
+  <text x="430" y="280" text-anchor="middle" font-size="13" font-weight="600" fill="#e67700">Claude Agent</text>
+  <text x="430" y="295" text-anchor="middle" font-size="10" fill="#b36b00">(decides tool order autonomously)</text>
+
+  <!-- Arrow with step 1 -->
+  <line x1="430" y1="305" x2="430" y2="345" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="445" cy="325" r="9" fill="#2f9e44"/>
+  <text x="445" y="329" text-anchor="middle" font-size="10" font-weight="700" fill="white">1</text>
+
+  <!-- classifyClaim -->
+  <rect x="310" y="345" width="240" height="60" rx="8" fill="#d8f5a2" stroke="#2f9e44" stroke-width="2"/>
+  <text x="430" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="#2f9e44">classifyClaim</text>
+  <text x="430" y="385" text-anchor="middle" font-size="10" fill="#3a7a20">type, severity, coverageArea, keyDetails</text>
+
+  <!-- Arrow with step 2 -->
+  <line x1="430" y1="405" x2="430" y2="445" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="445" cy="425" r="9" fill="#2f9e44"/>
+  <text x="445" y="429" text-anchor="middle" font-size="10" font-weight="700" fill="white">2</text>
+
+  <!-- lookupPolicy -->
+  <rect x="310" y="445" width="240" height="60" rx="8" fill="#d8f5a2" stroke="#2f9e44" stroke-width="2"/>
+  <text x="430" y="468" text-anchor="middle" font-size="13" font-weight="600" fill="#2f9e44">lookupPolicy</text>
+  <text x="430" y="485" text-anchor="middle" font-size="10" fill="#3a7a20">policyStatus, coverage, deductible, limits</text>
+
+  <!-- Arrow to decision -->
+  <line x1="430" y1="505" x2="430" y2="535" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Decision diamond -->
+  <polygon points="430,535 510,575 430,615 350,575" fill="#fff3bf" stroke="#e67700" stroke-width="2"/>
+  <text x="430" y="572" text-anchor="middle" font-size="11" font-weight="600" fill="#e67700">Policy</text>
+  <text x="430" y="585" text-anchor="middle" font-size="11" font-weight="600" fill="#e67700">Active?</text>
+
+  <!-- No arrow to deny -->
+  <line x1="510" y1="575" x2="620" y2="575" stroke="#e03131" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="555" y="565" text-anchor="middle" font-size="12" font-weight="600" fill="#e03131">No</text>
+
+  <!-- Deny box -->
+  <rect x="620" y="555" width="140" height="40" rx="8" fill="#ffc9c9" stroke="#e03131" stroke-width="2"/>
+  <text x="690" y="575" text-anchor="middle" font-size="12" font-weight="700" fill="#e03131">DENY</text>
+  <text x="690" y="588" text-anchor="middle" font-size="9" fill="#c92a2a">(verify policy number)</text>
+
+  <!-- Yes arrow -->
+  <line x1="430" y1="615" x2="430" y2="655" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="445" y="638" font-size="12" font-weight="600" fill="#2f9e44">Yes</text>
+
+  <!-- Step 3 -->
+  <circle cx="445" cy="645" r="9" fill="#2f9e44"/>
+  <text x="445" y="649" text-anchor="middle" font-size="10" font-weight="700" fill="white">3</text>
+
+  <!-- assessFraud -->
+  <rect x="310" y="660" width="240" height="60" rx="8" fill="#d8f5a2" stroke="#2f9e44" stroke-width="2"/>
+  <text x="430" y="683" text-anchor="middle" font-size="13" font-weight="600" fill="#2f9e44">assessFraud</text>
+  <text x="430" y="700" text-anchor="middle" font-size="10" fill="#3a7a20">riskScore, riskLevel, indicators</text>
+
+  <!-- Arrow with step 4 -->
+  <line x1="430" y1="720" x2="430" y2="760" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="445" cy="740" r="9" fill="#2f9e44"/>
+  <text x="445" y="744" text-anchor="middle" font-size="10" font-weight="700" fill="white">4</text>
+
+  <!-- estimateResolution -->
+  <rect x="310" y="760" width="240" height="60" rx="8" fill="#d8f5a2" stroke="#2f9e44" stroke-width="2"/>
+  <text x="430" y="783" text-anchor="middle" font-size="13" font-weight="600" fill="#2f9e44">estimateResolution</text>
+  <text x="430" y="800" text-anchor="middle" font-size="10" fill="#3a7a20">resolutionPath, payout, confidence</text>
+
+  <!-- Arrow to outcomes -->
+  <line x1="430" y1="820" x2="430" y2="860" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Outcomes container -->
+  <rect x="130" y="860" width="600" height="80" rx="10" fill="#f8f9fa" stroke="#adb5bd" stroke-width="1"/>
+  <text x="430" y="880" text-anchor="middle" font-size="11" fill="#868e96" font-weight="600">Resolution Outcomes</text>
+
+  <!-- Outcome boxes -->
+  <rect x="150" y="890" width="110" height="35" rx="6" fill="#b2f2bb" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="205" y="912" text-anchor="middle" font-size="12" font-weight="700" fill="#2f9e44">APPROVE</text>
+
+  <rect x="280" y="890" width="120" height="35" rx="6" fill="#ffec99" stroke="#e67700" stroke-width="1.5"/>
+  <text x="340" y="912" text-anchor="middle" font-size="12" font-weight="700" fill="#e67700">INVESTIGATE</text>
+
+  <rect x="420" y="890" width="110" height="35" rx="6" fill="#ffc9c9" stroke="#e03131" stroke-width="1.5"/>
+  <text x="475" y="912" text-anchor="middle" font-size="12" font-weight="700" fill="#e03131">ESCALATE</text>
+
+  <rect x="550" y="890" width="100" height="35" rx="6" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5"/>
+  <text x="600" y="912" text-anchor="middle" font-size="12" font-weight="700" fill="#7048e8">DENY</text>
+
+  <!-- Labels under outcomes -->
+  <text x="205" y="940" text-anchor="middle" font-size="9" fill="#868e96">STP (auto-resolve)</text>
+  <text x="340" y="940" text-anchor="middle" font-size="9" fill="#868e96">adjuster review</text>
+  <text x="475" y="940" text-anchor="middle" font-size="9" fill="#868e96">senior / SIU</text>
+  <text x="600" y="940" text-anchor="middle" font-size="9" fill="#868e96">no coverage</text>
+
+  <!-- Arrow to storage -->
+  <line x1="430" y1="940" x2="430" y2="975" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Storage -->
+  <rect x="300" y="975" width="260" height="45" rx="8" fill="#dee2e6" stroke="#495057" stroke-width="2"/>
+  <text x="430" y="998" text-anchor="middle" font-size="12" font-weight="600" fill="#495057">Store in SQLite + Send to PostHog</text>
+
+  <!-- Streaming note -->
+  <rect x="620" y="260" width="200" height="70" rx="8" fill="#f8f9fa" stroke="#adb5bd" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="720" y="282" text-anchor="middle" font-size="11" font-weight="600" fill="#868e96">Streaming UI</text>
+  <text x="720" y="298" text-anchor="middle" font-size="10" fill="#868e96">All tool calls and reasoning</text>
+  <text x="720" y="312" text-anchor="middle" font-size="10" fill="#868e96">streamed in real-time</text>
+
+  <!-- Dashed connector -->
+  <line x1="560" y1="280" x2="620" y2="290" stroke="#adb5bd" stroke-width="1" stroke-dasharray="4 2"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e03131"/>
+    </marker>
+  </defs>
+</svg>
