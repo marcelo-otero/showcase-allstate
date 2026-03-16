@@ -1,4 +1,4 @@
-import { streamText, stepCountIs } from "ai";
+import { streamText, stepCountIs, convertToModelMessages } from "ai";
 import { anthropic } from "@ai-sdk/anthropic";
 import { systemPrompt } from "@/lib/agent/system-prompt";
 import {
@@ -13,11 +13,12 @@ export const maxDuration = 60;
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
+    const modelMessages = await convertToModelMessages(messages);
 
     const result = streamText({
       model: anthropic("claude-sonnet-4-20250514"),
       system: systemPrompt,
-      messages,
+      messages: modelMessages,
       tools: {
         classifyClaim,
         lookupPolicy,
