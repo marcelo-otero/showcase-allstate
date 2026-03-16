@@ -4,74 +4,55 @@ AI-powered insurance claims triage that classifies, verifies coverage, screens f
 
 ## The Problem
 
-Claims triage at large P&C carriers is slow, inconsistent, and expensive. When a customer files a First Notice of Loss (FNOL), the claim enters a manual triage process: classify by type and severity, verify against the policy, screen for fraud indicators, and route to the right adjuster. This takes 24 to 48 hours for initial triage, and misrouted claims add 5 to 10 more days to total cycle time.
+When a customer files a First Notice of Loss, the claim has to be classified, the policy verified, fraud indicators checked, and the claim routed to the right adjuster. That process typically takes 24 to 48 hours, and misrouted claims add 5 to 10 more days on top of that.
 
-At Allstate's scale of approximately 4 million claims per year, even small improvements in triage speed and accuracy compound into significant reductions in loss adjustment expense (LAE), which runs 10 to 12% of incurred losses for top carriers.
+Allstate processes around 4 million claims a year. Loss adjustment expense runs 10 to 12% of incurred losses for top carriers. Even small improvements at the triage stage save real money.
 
 ## The Approach
 
-ClaimPilot uses Claude's tool-use API to build a multi-step agentic system. This is not a chatbot or a single-prompt classifier. The agent has four specialized tools and decides autonomously which to call and in what order:
+ClaimPilot is a multi-step agent, not a chatbot. I used Claude's tool-use API to build a system where the agent has four specialized tools and decides on its own which to call and in what order:
 
 1. **classifyClaim** - Extracts claim type, severity, coverage area, and key details from free-text descriptions
 2. **lookupPolicy** - Verifies coverage status, deductible, limits, and covered perils
 3. **assessFraud** - Screens for red flags: new policy timing, coverage limit proximity, no witnesses, inconsistent details
 4. **estimateResolution** - Recommends a path (approve, investigate, escalate, deny) with estimated payout range and next steps
 
-The agent streams its reasoning and tool calls to the UI in real-time, making every decision transparent and auditable.
+The agent streams its reasoning and tool calls to the UI in real-time. You can watch it think through the claim step by step.
 
 ## Architecture
 
-```
-User submits FNOL
-       |
-       v
-  [Intake Form] -----> [Claude Agent (streamText)]
-                              |
-                    +---------+---------+---------+
-                    |         |         |         |
-              classifyClaim  lookupPolicy  assessFraud  estimateResolution
-                    |         |         |         |
-                    +---------+---------+---------+
-                              |
-                              v
-                    [Streaming Response]
-                    (reasoning + tool call cards)
-                              |
-                              v
-                    [SQLite + PostHog]
-                              |
-                              v
-                    [Analytics Dashboard]
-```
+![ClaimPilot architecture diagram](public/diagrams/architecture.png)
+
+The intake form sends the claim to a Claude agent via Vercel AI SDK's `streamText`. The agent calls its tools, streams the results back to the UI as collapsible cards, stores everything in SQLite, and fires PostHog events. The dashboard is a server component that queries SQLite directly.
 
 **Stack:** Next.js 16, TypeScript, Tailwind 4, shadcn/ui, Vercel AI SDK, Claude API, SQLite, PostHog, Vitest
 
 ## Demo Data & Results
 
-From running 16 sample claims (auto, home, liability) through the triage system:
+I ran 16 sample claims (auto, home, liability) through the system. Here's what came back:
 
 | Metric | Result |
 |---|---|
 | Average triage time | Under 1 second (vs. 24-48 hours manual) |
-| Fraud flag rate | 12% (medium + high risk, aligned with industry benchmarks) |
+| Fraud flag rate | 12% (medium + high risk) |
 | Auto-resolution rate | 6% (low-complexity STP candidates) |
 | Resolution distribution | 1 approve, 8 investigate, 6 escalate, 1 deny |
 | Severity distribution | 3 medium, 9 high, 4 critical |
 
-Sample claims include edge cases: fraud indicators (new policy + total loss claim at cousin's shop), expired policies (automatic deny), ambiguous coverage (foundation damage), and multi-party incidents.
+The sample claims include edge cases: fraud indicators (new policy + total loss claim at a cousin's shop), expired policies (automatic deny), ambiguous coverage (foundation damage), and multi-party incidents.
 
 ## Key Technical Decisions
 
-- **Streaming tool-use over prompt chaining** - The agent decides tool order autonomously rather than following a fixed script. If the policy is expired, it skips fraud assessment and goes straight to denial. More realistic, more agentic.
-- **Rule-based tools, LLM orchestration** - Tools are deterministic and testable (18 unit tests). The agent decides which to call and interprets results. Separation means the demo works without API costs for every data point.
-- **SQLite for demo, designed for production** - Dashboard queries SQLite directly as a server component. In production, swap for Turso or PostgreSQL without changing the query layer.
-- **"Triage assistance" not "automation"** - Validated with insurance industry expertise. No carrier will let AI auto-settle claims. ClaimPilot augments adjusters, it doesn't replace them.
+- **Streaming tool-use over prompt chaining.** The agent decides tool order autonomously. If the policy is expired, it skips fraud assessment and goes straight to denial. That's closer to how a real adjuster thinks.
+- **Rule-based tools, LLM orchestration.** Tools are deterministic and testable (18 unit tests). Claude decides which to call and interprets results. The demo works without burning API credits for every data point.
+- **SQLite for demo, designed for production.** The dashboard queries SQLite directly as a server component. In production, swap for Turso or PostgreSQL without changing the query layer.
+- **"Triage assistance" not "automation."** No carrier will let AI auto-settle claims. I validated this with insurance industry expertise early on. ClaimPilot gives adjusters a head start, it doesn't replace them.
 
-See the full [decision log](docs/decision-log.md) with 8 tradeoff entries.
+Full [decision log](docs/decision-log.md) with 8 tradeoff entries.
 
 ## What I'd Do Next
 
-If this were a production product at Allstate:
+If this were a real product at Allstate:
 
 - **Real data integration** - Connect `lookupPolicy` to Guidewire/Duck Creek instead of sample data
 - **ML-based tools** - Replace rule-based classification with models trained on historical claims
@@ -83,14 +64,7 @@ If this were a production product at Allstate:
 
 ## Built With
 
-- [Next.js 16](https://nextjs.org) - React framework
-- [TypeScript](https://www.typescriptlang.org) - Type safety
-- [Tailwind CSS 4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) - Styling and components
-- [Vercel AI SDK](https://sdk.vercel.ai) - Claude integration with streaming
-- [Claude API](https://docs.anthropic.com) - Multi-step tool-use agent
-- [SQLite](https://www.sqlite.org) - Local data storage
-- [PostHog](https://posthog.com) - Product analytics
-- [Vitest](https://vitest.dev) - Unit testing (18 tests)
+[Next.js 16](https://nextjs.org) | [TypeScript](https://www.typescriptlang.org) | [Tailwind CSS 4](https://tailwindcss.com) | [shadcn/ui](https://ui.shadcn.com) | [Vercel AI SDK](https://sdk.vercel.ai) | [Claude API](https://docs.anthropic.com) | [SQLite](https://www.sqlite.org) | [PostHog](https://posthog.com) | [Vitest](https://vitest.dev)
 
 ## Running Locally
 
@@ -103,4 +77,4 @@ pnpm dev                    # Start dev server
 
 ## About
 
-Built by Marcelo Otero as a product management portfolio project demonstrating applied AI in insurance claims processing. Designed specifically for the Allstate Digital Product Manager role to show hands-on experience with agentic technologies, data-driven product thinking, and end-to-end execution.
+Built by [Marcelo Otero](https://www.linkedin.com/in/marcelo-otero/). I'm a product manager who builds. I made ClaimPilot to show what AI-powered claims triage could look like at Allstate, and to demonstrate that I can take a product from idea through shipped prototype.
