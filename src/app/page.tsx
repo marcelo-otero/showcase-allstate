@@ -33,19 +33,30 @@ ${claim.description}`;
   const hasResults = messages.some((m: { role: string }) => m.role === "assistant");
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold">Claims Triage</h1>
-        <p className="text-muted-foreground mt-1">
+    <div className="max-w-6xl mx-auto px-6 py-10">
+      <div className="mb-10">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+          <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
+            First Notice of Loss
+          </span>
+          <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
+        </div>
+        <h1 className="text-3xl font-bold tracking-tight text-center">
+          Claims Triage
+        </h1>
+        <p className="text-muted-foreground mt-2 text-center max-w-xl mx-auto text-[15px]">
           Submit a claim and watch the AI agent classify, verify coverage,
           screen for fraud, and recommend a resolution path.
         </p>
       </div>
 
       <div
-        className={`grid gap-6 ${hasResults ? "lg:grid-cols-2" : "max-w-2xl"}`}
+        className={`grid gap-8 items-start ${hasResults ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]" : "max-w-xl mx-auto"}`}
       >
-        <ClaimForm onSubmit={handleSubmit} isProcessing={isLoading} />
+        <div className={hasResults ? "lg:sticky lg:top-20" : ""}>
+          <ClaimForm onSubmit={handleSubmit} isProcessing={isLoading} />
+        </div>
         <AgentChat messages={messages} isLoading={isLoading} />
       </div>
     </div>

@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { samplePolicies } from "@/lib/data/sample-policies";
 import { sampleClaims } from "@/lib/data/sample-claims";
 import { trackEvent } from "@/components/posthog-provider";
@@ -63,107 +62,171 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Submit a Claim (FNOL)</CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Enter claim details below or load a sample claim for demo purposes.
+    <div className="bg-white rounded-xl border border-border/60 shadow-sm overflow-hidden">
+      <div className="px-6 pt-6 pb-4">
+        <h2 className="text-base font-semibold tracking-tight">
+          Submit a Claim
+        </h2>
+        <p className="text-sm text-muted-foreground mt-0.5">
+          Enter claim details or load a sample for demo.
         </p>
-      </CardHeader>
-      <CardContent>
-        <div className="mb-4">
-          <Label className="text-xs text-muted-foreground mb-1.5 block">
-            Load sample claim
+      </div>
+
+      <div className="px-6 pb-4">
+        <div className="bg-accent/50 rounded-lg p-3 border border-border/40">
+          <Label className="text-xs font-medium text-muted-foreground mb-1.5 block">
+            Quick start: load a sample claim
           </Label>
           <Select onValueChange={loadSampleClaim}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-white">
               <SelectValue placeholder="Select a sample claim..." />
             </SelectTrigger>
             <SelectContent>
               {sampleClaims.map((claim) => (
                 <SelectItem key={claim.id} value={claim.id}>
-                  {claim.id} - {claim.claimantName} ({claim.claimType},{" "}
-                  {claim.expectedSeverity})
+                  <span className="font-mono text-xs text-muted-foreground mr-1.5">
+                    {claim.id}
+                  </span>
+                  {claim.claimantName}
+                  <span className="text-muted-foreground ml-1">
+                    ({claim.claimType}, {claim.expectedSeverity})
+                  </span>
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
+      </div>
 
-        <hr className="my-4" />
+      <div className="h-px bg-border/60 mx-6" />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="claimantName">Claimant Name</Label>
-              <Input
-                id="claimantName"
-                value={claimantName}
-                onChange={(e) => setClaimantName(e.target.value)}
-                placeholder="e.g., James Mitchell"
-                required
-              />
-            </div>
-            <div>
-              <Label htmlFor="policyId">Policy Number</Label>
-              <Select value={policyId} onValueChange={(v) => setPolicyId(v ?? "")}>
-                <SelectTrigger id="policyId">
-                  <SelectValue placeholder="Select policy..." />
-                </SelectTrigger>
-                <SelectContent>
-                  {samplePolicies.map((policy) => (
-                    <SelectItem key={policy.policyId} value={policy.policyId}>
-                      {policy.policyId} - {policy.holderName}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="claimType">Claim Type (optional)</Label>
-              <Select value={claimType} onValueChange={(v) => setClaimType(v ?? "")}>
-                <SelectTrigger id="claimType">
-                  <SelectValue placeholder="Agent will classify..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="auto">Auto</SelectItem>
-                  <SelectItem value="home">Home</SelectItem>
-                  <SelectItem value="liability">Liability</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label htmlFor="dateOfIncident">Date of Incident</Label>
-              <Input
-                id="dateOfIncident"
-                type="date"
-                value={dateOfIncident}
-                onChange={(e) => setDateOfIncident(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-
-          <div>
-            <Label htmlFor="description">Claim Description</Label>
-            <Textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe what happened in detail..."
-              rows={5}
+      <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="claimantName" className="text-xs font-medium">
+              Claimant Name
+            </Label>
+            <Input
+              id="claimantName"
+              value={claimantName}
+              onChange={(e) => setClaimantName(e.target.value)}
+              placeholder="e.g., James Mitchell"
               required
+              className="bg-white"
             />
           </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="policyId" className="text-xs font-medium">
+              Policy Number
+            </Label>
+            <Select value={policyId} onValueChange={(v) => setPolicyId(v ?? "")}>
+              <SelectTrigger id="policyId" className="bg-white">
+                <SelectValue placeholder="Select policy..." />
+              </SelectTrigger>
+              <SelectContent>
+                {samplePolicies.map((policy) => (
+                  <SelectItem key={policy.policyId} value={policy.policyId}>
+                    <span className="font-mono text-xs">{policy.policyId}</span>
+                    <span className="text-muted-foreground ml-1">
+                      {policy.holderName}
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
 
-          <Button type="submit" className="w-full" disabled={isProcessing}>
-            {isProcessing ? "Processing..." : "Submit Claim for Triage"}
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="claimType" className="text-xs font-medium">
+              Claim Type
+              <span className="text-muted-foreground font-normal ml-1">
+                (optional)
+              </span>
+            </Label>
+            <Select value={claimType} onValueChange={(v) => setClaimType(v ?? "")}>
+              <SelectTrigger id="claimType" className="bg-white">
+                <SelectValue placeholder="Agent will classify..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="auto">Auto</SelectItem>
+                <SelectItem value="home">Home</SelectItem>
+                <SelectItem value="liability">Liability</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="dateOfIncident" className="text-xs font-medium">
+              Date of Incident
+            </Label>
+            <Input
+              id="dateOfIncident"
+              type="date"
+              value={dateOfIncident}
+              onChange={(e) => setDateOfIncident(e.target.value)}
+              required
+              className="bg-white"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="description" className="text-xs font-medium">
+            Claim Description
+          </Label>
+          <Textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Describe the incident in detail..."
+            rows={4}
+            required
+            className="bg-white resize-none"
+          />
+        </div>
+
+        <Button
+          type="submit"
+          className="w-full h-10 font-medium bg-gradient-to-b from-[oklch(0.40_0.14_250)] to-[oklch(0.33_0.12_255)] hover:from-[oklch(0.38_0.14_250)] hover:to-[oklch(0.30_0.12_255)] shadow-sm"
+          disabled={isProcessing}
+        >
+          {isProcessing ? (
+            <span className="flex items-center gap-2">
+              <svg
+                className="animate-spin h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeDasharray="32"
+                  strokeLinecap="round"
+                  className="opacity-25"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeDasharray="32"
+                  strokeDashoffset="24"
+                  strokeLinecap="round"
+                  className="opacity-75"
+                />
+              </svg>
+              Processing claim...
+            </span>
+          ) : (
+            "Submit Claim for Triage"
+          )}
+        </Button>
+      </form>
+    </div>
   );
 }

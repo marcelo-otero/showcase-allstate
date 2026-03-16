@@ -37,26 +37,48 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <header className="border-b border-border bg-white">
-          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">
-                  CP
-                </span>
+        <header className="sticky top-0 z-50 border-b border-border/60 bg-white/80 backdrop-blur-lg">
+          <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 bg-gradient-to-br from-[oklch(0.40_0.14_250)] to-[oklch(0.30_0.12_260)] rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  className="text-white"
+                >
+                  <path
+                    d="M8 1L2 4.5V11.5L8 15L14 11.5V4.5L8 1Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                    fill="currentColor"
+                    fillOpacity="0.2"
+                  />
+                  <path
+                    d="M5 7.5L7 9.5L11 5.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
-              <span className="font-semibold text-lg">ClaimPilot</span>
+              <span className="font-semibold text-[15px] tracking-tight text-foreground">
+                ClaimPilot
+              </span>
             </Link>
-            <nav className="flex items-center gap-6">
+            <nav className="flex items-center gap-1">
               <Link
                 href="/"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-all"
               >
                 Submit Claim
               </Link>
               <Link
                 href="/dashboard"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-all"
               >
                 Dashboard
               </Link>
@@ -68,9 +90,10 @@ export default function RootLayout({
           <PostHogProvider>{children}</PostHogProvider>
         </main>
 
-        <footer className="border-t border-border py-4">
-          <div className="max-w-6xl mx-auto px-4 text-center text-sm text-muted-foreground">
-            Built by Marcelo Otero | Powered by Claude API
+        <footer className="border-t border-border/60 py-5 bg-white/50">
+          <div className="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-muted-foreground">
+            <span>Built by Marcelo Otero</span>
+            <span>Powered by Claude API</span>
           </div>
         </footer>
       </body>
