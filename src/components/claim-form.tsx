@@ -68,7 +68,7 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
           Submit a Claim
         </h2>
         <p className="text-sm text-[#5a6578] mt-0.5">
-          Enter claim details or load a sample for demo.
+          Load a sample claim to see the agent in action. All fields use demo data.
         </p>
       </div>
 
@@ -118,12 +118,13 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
           <div className="space-y-1.5">
             <Label htmlFor="policyId" className="text-xs font-medium text-[#0e1941]">
               Policy Number
+              <span className="text-[#5a6578] font-normal ml-1">(demo)</span>
             </Label>
             <Select value={policyId} onValueChange={(v) => setPolicyId(v ?? "")}>
               <SelectTrigger id="policyId" className="bg-white">
                 <SelectValue placeholder="Select policy..." />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="min-w-[280px]">
                 {samplePolicies.map((policy) => (
                   <SelectItem key={policy.policyId} value={policy.policyId}>
                     <span className="font-mono text-xs">{policy.policyId}</span>
