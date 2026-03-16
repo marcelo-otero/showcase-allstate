@@ -404,7 +404,7 @@ export default function AboutPage() {
             label="Avg triage time"
             accent="text-green-700"
           />
-          <MetricCard value="12%" label="Fraud flag rate" />
+          <MetricCard value="13%" label="Fraud flag rate" />
           <MetricCard value="6%" label="Auto-resolution rate" />
           <MetricCard value="8" label="Tradeoffs documented" />
         </div>

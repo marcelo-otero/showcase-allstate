@@ -34,9 +34,9 @@ I ran 16 sample claims (auto, home, liability) through the system. Here's what c
 | Metric | Result |
 |---|---|
 | Average triage time | Under 1 second (vs. 24-48 hours manual) |
-| Fraud flag rate | 12% (medium + high risk) |
+| Fraud flag rate | 13% (medium + high risk) |
 | Auto-resolution rate | 6% (low-complexity STP candidates) |
-| Resolution distribution | 1 approve, 8 investigate, 6 escalate, 1 deny |
+| Resolution distribution | 1 approve, 9 investigate, 5 escalate, 1 deny |
 | Severity distribution | 3 medium, 9 high, 4 critical |
 
 The sample claims include edge cases: fraud indicators (new policy + total loss claim at a cousin's shop), expired policies (automatic deny), ambiguous coverage (foundation damage), and multi-party incidents.
