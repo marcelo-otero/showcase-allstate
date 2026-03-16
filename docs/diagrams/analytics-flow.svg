@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 580" width="780" height="580" font-family="'Geist', 'Segoe UI', system-ui, -apple-system, sans-serif">
+  <rect width="780" height="580" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="390" y="35" text-anchor="middle" font-size="24" font-weight="700" fill="#1a1a2e">ClaimPilot Analytics Flow</text>
+
+  <!-- Column headers -->
+  <text x="120" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#1971c2">User Actions</text>
+  <text x="370" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#2f9e44">Events Fired</text>
+  <text x="630" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#e67700">PostHog Insights</text>
+
+  <!-- Divider lines -->
+  <line x1="245" y1="55" x2="245" y2="530" stroke="#e9ecef" stroke-width="1"/>
+  <line x1="495" y1="55" x2="495" y2="530" stroke="#e9ecef" stroke-width="1"/>
+
+  <!-- Row 1: Visit -->
+  <rect x="30" y="90" width="180" height="42" rx="6" fill="#d0ebff" stroke="#1971c2" stroke-width="1.5"/>
+  <text x="120" y="116" text-anchor="middle" font-size="12" font-weight="600" fill="#1971c2">Visits home page</text>
+
+  <line x1="210" y1="111" x2="270" y2="111" stroke="#adb5bd" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="270" y="90" width="200" height="42" rx="6" fill="#d8f5a2" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="370" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#2f9e44" font-family="'Geist Mono', monospace">$pageview</text>
+
+  <!-- Row 2: Load sample -->
+  <rect x="30" y="155" width="180" height="42" rx="6" fill="#d0ebff" stroke="#1971c2" stroke-width="1.5"/>
+  <text x="120" y="181" text-anchor="middle" font-size="12" font-weight="600" fill="#1971c2">Loads sample claim</text>
+
+  <line x1="210" y1="176" x2="270" y2="176" stroke="#adb5bd" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="270" y="150" width="200" height="52" rx="6" fill="#d8f5a2" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="370" y="172" text-anchor="middle" font-size="11" font-weight="600" fill="#2f9e44" font-family="'Geist Mono', monospace">sample_claim_loaded</text>
+  <text x="370" y="190" text-anchor="middle" font-size="9" fill="#3a7a20">claimId, claimType, expectedSeverity</text>
+
+  <!-- Row 3: Submit -->
+  <rect x="30" y="225" width="180" height="42" rx="6" fill="#d0ebff" stroke="#1971c2" stroke-width="1.5"/>
+  <text x="120" y="251" text-anchor="middle" font-size="12" font-weight="600" fill="#1971c2">Submits claim</text>
+
+  <line x1="210" y1="246" x2="270" y2="246" stroke="#adb5bd" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="270" y="220" width="200" height="52" rx="6" fill="#d8f5a2" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="370" y="242" text-anchor="middle" font-size="11" font-weight="600" fill="#2f9e44" font-family="'Geist Mono', monospace">claim_submitted</text>
+  <text x="370" y="260" text-anchor="middle" font-size="9" fill="#3a7a20">claimType, policyId, hasDescription</text>
+
+  <!-- Row 4: Watches triage -->
+  <rect x="30" y="300" width="180" height="42" rx="6" fill="#d0ebff" stroke="#1971c2" stroke-width="1.5"/>
+  <text x="120" y="326" text-anchor="middle" font-size="12" font-weight="600" fill="#1971c2">Watches agent triage</text>
+
+  <line x1="210" y1="321" x2="270" y2="321" stroke="#adb5bd" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="270" y="290" width="200" height="62" rx="6" fill="#d8f5a2" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="370" y="310" text-anchor="middle" font-size="11" font-weight="600" fill="#2f9e44" font-family="'Geist Mono', monospace">agent_triage_completed</text>
+  <text x="370" y="326" text-anchor="middle" font-size="9" fill="#3a7a20">resolutionPath, fraudRiskLevel,</text>
+  <text x="370" y="340" text-anchor="middle" font-size="9" fill="#3a7a20">severity, triageTimeMs, confidence</text>
+
+  <!-- Row 5: Views dashboard -->
+  <rect x="30" y="380" width="180" height="42" rx="6" fill="#d0ebff" stroke="#1971c2" stroke-width="1.5"/>
+  <text x="120" y="406" text-anchor="middle" font-size="12" font-weight="600" fill="#1971c2">Views dashboard</text>
+
+  <line x1="210" y1="401" x2="270" y2="401" stroke="#adb5bd" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="270" y="380" width="200" height="42" rx="6" fill="#d8f5a2" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="370" y="406" text-anchor="middle" font-size="11" font-weight="600" fill="#2f9e44" font-family="'Geist Mono', monospace">dashboard_viewed</text>
+
+  <!-- PostHog Insights -->
+  <line x1="470" y1="111" x2="510" y2="140" stroke="#adb5bd" stroke-width="1" marker-end="url(#a)"/>
+  <line x1="470" y1="176" x2="510" y2="155" stroke="#adb5bd" stroke-width="1" marker-end="url(#a)"/>
+
+  <rect x="510" y="100" width="240" height="80" rx="8" fill="#fff3bf" stroke="#e67700" stroke-width="1.5"/>
+  <text x="630" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#e67700">Usage Overview</text>
+  <text x="530" y="140" font-size="10" fill="#b36b00">- Daily active sessions</text>
+  <text x="530" y="155" font-size="10" fill="#b36b00">- Sample claim popularity</text>
+  <text x="530" y="170" font-size="10" fill="#b36b00">- Page view trends</text>
+
+  <line x1="470" y1="246" x2="510" y2="275" stroke="#adb5bd" stroke-width="1" marker-end="url(#a)"/>
+  <line x1="470" y1="321" x2="510" y2="305" stroke="#adb5bd" stroke-width="1" marker-end="url(#a)"/>
+
+  <rect x="510" y="230" width="240" height="100" rx="8" fill="#fff3bf" stroke="#e67700" stroke-width="1.5"/>
+  <text x="630" y="252" text-anchor="middle" font-size="12" font-weight="700" fill="#e67700">Triage Performance</text>
+  <text x="530" y="270" font-size="10" fill="#b36b00">- Avg triage time trend</text>
+  <text x="530" y="285" font-size="10" fill="#b36b00">- Resolution distribution</text>
+  <text x="530" y="300" font-size="10" fill="#b36b00">- Fraud flag rate over time</text>
+  <text x="530" y="315" font-size="10" fill="#b36b00">- Severity breakdown</text>
+
+  <line x1="470" y1="401" x2="510" y2="400" stroke="#adb5bd" stroke-width="1" marker-end="url(#a)"/>
+
+  <rect x="510" y="370" width="240" height="70" rx="8" fill="#fff3bf" stroke="#e67700" stroke-width="1.5"/>
+  <text x="630" y="392" text-anchor="middle" font-size="12" font-weight="700" fill="#e67700">Funnel Analysis</text>
+  <text x="530" y="410" font-size="10" fill="#b36b00">Visit  &gt;  Submit  &gt;  Triage  &gt;  Dashboard</text>
+  <text x="530" y="425" font-size="10" fill="#b36b00">- Drop-off between each step</text>
+
+  <!-- Funnel label at bottom -->
+  <rect x="30" y="455" width="720" height="35" rx="8" fill="#f8f9fa" stroke="#dee2e6"/>
+  <text x="390" y="477" text-anchor="middle" font-size="12" font-weight="600" fill="#495057">
+    Funnel: Visit (pageview)  &#x2192;  Submit (claim_submitted)  &#x2192;  Triage (agent_triage_completed)  &#x2192;  Dashboard (dashboard_viewed)
+  </text>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#adb5bd"/>
+    </marker>
+  </defs>
+</svg>
