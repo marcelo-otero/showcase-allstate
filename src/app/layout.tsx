@@ -81,7 +81,7 @@ export default function RootLayout({
             <div className="w-full flex items-center justify-center">
               <span>Built by <a href="https://www.linkedin.com/in/marcelo-otero/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/90 transition-colors">Marcelo Otero</a></span>
             </div>
-            <p className="text-white/40 text-xs">
+            <p className="text-white/60 text-xs">
               Independent portfolio project. Not affiliated with or endorsed by Allstate.
             </p>
           </div>

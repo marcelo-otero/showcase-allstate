@@ -153,7 +153,7 @@ export default function DashboardPage() {
       {/* Charts */}
       <div className="grid md:grid-cols-2 gap-5 mb-8">
         <div className="bg-white rounded-xl border border-[#d6dce6] shadow-[0_2px_8px_rgba(14,25,65,0.06)] p-5">
-          <h3 className="text-base font-semibold mb-4 text-[#0e1941]">Claims by Type</h3>
+          <h2 className="text-base font-semibold mb-4 text-[#0e1941]">Claims by Type</h2>
           <BarChart
             data={stats.claimsByType.map((c) => ({
               label: c.type,
@@ -164,9 +164,9 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-white rounded-xl border border-[#d6dce6] shadow-[0_2px_8px_rgba(14,25,65,0.06)] p-5">
-          <h3 className="text-base font-semibold mb-4 text-[#0e1941]">
+          <h2 className="text-base font-semibold mb-4 text-[#0e1941]">
             Severity Distribution
-          </h3>
+          </h2>
           <BarChart
             data={stats.severityDistribution.map((s) => ({
               label: s.severity,
@@ -177,7 +177,7 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-white rounded-xl border border-[#d6dce6] shadow-[0_2px_8px_rgba(14,25,65,0.06)] p-5">
-          <h3 className="text-base font-semibold mb-4 text-[#0e1941]">Resolution Outcomes</h3>
+          <h2 className="text-base font-semibold mb-4 text-[#0e1941]">Resolution Outcomes</h2>
           <BarChart
             data={stats.resolutionBreakdown.map((r) => ({
               label: r.path,
@@ -188,9 +188,9 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-white rounded-xl border border-[#d6dce6] shadow-[0_2px_8px_rgba(14,25,65,0.06)] p-5">
-          <h3 className="text-base font-semibold mb-4 text-[#0e1941]">
+          <h2 className="text-base font-semibold mb-4 text-[#0e1941]">
             Fraud Risk Distribution
-          </h3>
+          </h2>
           <BarChart
             data={stats.fraudRiskDistribution.map((f) => ({
               label: f.level,
@@ -204,7 +204,7 @@ export default function DashboardPage() {
       {/* Recent Claims Table */}
       <div className="bg-white rounded-xl border border-[#d6dce6] shadow-[0_2px_8px_rgba(14,25,65,0.06)] overflow-hidden">
         <div className="px-5 py-4 border-b border-[#d6dce6]">
-          <h3 className="text-base font-semibold text-[#0e1941]">Recent Claims</h3>
+          <h2 className="text-base font-semibold text-[#0e1941]">Recent Claims</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
