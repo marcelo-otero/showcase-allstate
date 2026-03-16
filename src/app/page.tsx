@@ -182,7 +182,7 @@ export default function HomePage() {
         <div className="flex items-center justify-center gap-3 mt-6">
           <Link
             href="/demo"
-            className="inline-flex items-center px-5 py-2 text-sm font-medium text-white bg-[#ed7766] hover:bg-[#e5624f] rounded-full shadow-[0_2px_6px_rgba(237,119,102,0.3)] transition-all"
+            className="inline-flex items-center px-5 py-2 text-sm font-medium text-white bg-[#d4553f] hover:bg-[#c04a36] rounded-full shadow-[0_2px_6px_rgba(212,85,63,0.3)] transition-all"
           >
             Try the Demo
           </Link>
@@ -193,7 +193,7 @@ export default function HomePage() {
             View Dashboard
           </Link>
         </div>
-        <p className="text-xs text-[#5a6578]/70 mt-5 text-center max-w-lg mx-auto">
+        <p className="text-xs text-[#5a6578] mt-5 text-center max-w-lg mx-auto">
           This is an independent portfolio project, not affiliated with or
           endorsed by Allstate. Built with sample data only.
         </p>
@@ -303,7 +303,7 @@ export default function HomePage() {
               href="/diagrams/agent-workflow.webp"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0033a0] hover:underline"
+              className="text-[#0033a0] underline hover:no-underline"
             >
               View detailed agent workflow diagram
             </a>
@@ -387,7 +387,7 @@ export default function HomePage() {
             href="https://github.com/marcelo-otero/showcase-allstate"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#0033a0] hover:underline"
+            className="text-[#0033a0] underline hover:no-underline"
           >
             GitHub
           </a>
@@ -426,7 +426,7 @@ export default function HomePage() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Link
               href="/demo"
-              className="inline-flex items-center px-6 py-2.5 text-sm font-medium text-white bg-[#ed7766] hover:bg-[#e5624f] rounded-full shadow-[0_2px_6px_rgba(237,119,102,0.3)] transition-all"
+              className="inline-flex items-center px-6 py-2.5 text-sm font-medium text-white bg-[#d4553f] hover:bg-[#c04a36] rounded-full shadow-[0_2px_6px_rgba(212,85,63,0.3)] transition-all"
             >
               Submit a Claim
             </Link>
@@ -461,7 +461,7 @@ export default function HomePage() {
               href="https://www.linkedin.com/in/marcelo-otero/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#0033a0] hover:underline font-medium"
+              className="text-sm text-[#0033a0] underline hover:no-underline font-medium"
             >
               LinkedIn
             </a>
@@ -470,7 +470,7 @@ export default function HomePage() {
               href="https://github.com/marcelo-otero"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#0033a0] hover:underline font-medium"
+              className="text-sm text-[#0033a0] underline hover:no-underline font-medium"
             >
               GitHub
             </a>
