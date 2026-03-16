@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { PostHogProvider } from "@/components/posthog-provider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -35,15 +36,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${plusJakartaSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <header className="sticky top-0 z-50 border-b border-border/60 bg-white/80 backdrop-blur-lg">
+        <header className="sticky top-0 z-50 bg-[#0e1941] text-white">
           <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 bg-gradient-to-br from-[oklch(0.40_0.14_250)] to-[oklch(0.30_0.12_260)] rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+              <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/15 transition-colors">
                 <svg
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   viewBox="0 0 16 16"
                   fill="none"
                   className="text-white"
@@ -54,7 +55,7 @@ export default function RootLayout({
                     strokeWidth="1.5"
                     strokeLinejoin="round"
                     fill="currentColor"
-                    fillOpacity="0.2"
+                    fillOpacity="0.15"
                   />
                   <path
                     d="M5 7.5L7 9.5L11 5.5"
@@ -65,20 +66,20 @@ export default function RootLayout({
                   />
                 </svg>
               </div>
-              <span className="font-semibold text-[15px] tracking-tight text-foreground">
+              <span className="font-semibold text-[15px] tracking-tight text-white">
                 ClaimPilot
               </span>
             </Link>
             <nav className="flex items-center gap-1">
               <Link
                 href="/"
-                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-all"
+                className="px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all"
               >
                 Submit Claim
               </Link>
               <Link
                 href="/dashboard"
-                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-all"
+                className="px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all"
               >
                 Dashboard
               </Link>
@@ -90,8 +91,8 @@ export default function RootLayout({
           <PostHogProvider>{children}</PostHogProvider>
         </main>
 
-        <footer className="border-t border-border/60 py-5 bg-white/50">
-          <div className="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-muted-foreground">
+        <footer className="bg-[#0e1941] py-5">
+          <div className="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/50">
             <span>Built by Marcelo Otero</span>
             <span>Powered by Claude API</span>
           </div>

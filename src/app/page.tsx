@@ -35,17 +35,17 @@ ${claim.description}`;
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <div className="mb-10">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
-          <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="h-px flex-1 bg-gradient-to-r from-[#d6dce6] to-transparent" />
+          <span className="text-xs font-medium tracking-widest uppercase text-[#5a6578]">
             First Notice of Loss
           </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
+          <div className="h-px flex-1 bg-gradient-to-l from-[#d6dce6] to-transparent" />
         </div>
-        <h1 className="text-3xl font-bold tracking-tight text-center">
+        <h1 className="text-3xl font-bold tracking-tight text-center text-[#0e1941]">
           Claims Triage
         </h1>
-        <p className="text-muted-foreground mt-2 text-center max-w-xl mx-auto text-[15px]">
+        <p className="text-[#5a6578] mt-2 text-center max-w-xl mx-auto text-[15px]">
           Submit a claim and watch the AI agent classify, verify coverage,
           screen for fraud, and recommend a resolution path.
         </p>

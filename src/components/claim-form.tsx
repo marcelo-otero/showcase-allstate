@@ -62,19 +62,19 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-border/60 shadow-sm overflow-hidden">
+    <div className="bg-white rounded-xl border border-[#d6dce6] shadow-[0_2px_8px_rgba(14,25,65,0.06)] overflow-hidden">
       <div className="px-6 pt-6 pb-4">
-        <h2 className="text-base font-semibold tracking-tight">
+        <h2 className="text-base font-semibold tracking-tight text-[#0e1941]">
           Submit a Claim
         </h2>
-        <p className="text-sm text-muted-foreground mt-0.5">
+        <p className="text-sm text-[#5a6578] mt-0.5">
           Enter claim details or load a sample for demo.
         </p>
       </div>
 
       <div className="px-6 pb-4">
-        <div className="bg-accent/50 rounded-lg p-3 border border-border/40">
-          <Label className="text-xs font-medium text-muted-foreground mb-1.5 block">
+        <div className="bg-[#d9eeff]/40 rounded-lg p-3 border border-[#45bce5]/20">
+          <Label className="text-xs font-medium text-[#5a6578] mb-1.5 block">
             Quick start: load a sample claim
           </Label>
           <Select onValueChange={loadSampleClaim}>
@@ -84,11 +84,11 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
             <SelectContent>
               {sampleClaims.map((claim) => (
                 <SelectItem key={claim.id} value={claim.id}>
-                  <span className="font-mono text-xs text-muted-foreground mr-1.5">
+                  <span className="font-mono text-xs text-[#5a6578] mr-1.5">
                     {claim.id}
                   </span>
                   {claim.claimantName}
-                  <span className="text-muted-foreground ml-1">
+                  <span className="text-[#5a6578] ml-1">
                     ({claim.claimType}, {claim.expectedSeverity})
                   </span>
                 </SelectItem>
@@ -98,12 +98,12 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
         </div>
       </div>
 
-      <div className="h-px bg-border/60 mx-6" />
+      <div className="h-px bg-[#d6dce6] mx-6" />
 
       <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <Label htmlFor="claimantName" className="text-xs font-medium">
+            <Label htmlFor="claimantName" className="text-xs font-medium text-[#0e1941]">
               Claimant Name
             </Label>
             <Input
@@ -116,7 +116,7 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="policyId" className="text-xs font-medium">
+            <Label htmlFor="policyId" className="text-xs font-medium text-[#0e1941]">
               Policy Number
             </Label>
             <Select value={policyId} onValueChange={(v) => setPolicyId(v ?? "")}>
@@ -127,7 +127,7 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
                 {samplePolicies.map((policy) => (
                   <SelectItem key={policy.policyId} value={policy.policyId}>
                     <span className="font-mono text-xs">{policy.policyId}</span>
-                    <span className="text-muted-foreground ml-1">
+                    <span className="text-[#5a6578] ml-1">
                       {policy.holderName}
                     </span>
                   </SelectItem>
@@ -139,9 +139,9 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <Label htmlFor="claimType" className="text-xs font-medium">
+            <Label htmlFor="claimType" className="text-xs font-medium text-[#0e1941]">
               Claim Type
-              <span className="text-muted-foreground font-normal ml-1">
+              <span className="text-[#5a6578] font-normal ml-1">
                 (optional)
               </span>
             </Label>
@@ -157,7 +157,7 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
             </Select>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="dateOfIncident" className="text-xs font-medium">
+            <Label htmlFor="dateOfIncident" className="text-xs font-medium text-[#0e1941]">
               Date of Incident
             </Label>
             <Input
@@ -172,7 +172,7 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="description" className="text-xs font-medium">
+          <Label htmlFor="description" className="text-xs font-medium text-[#0e1941]">
             Claim Description
           </Label>
           <Textarea
@@ -188,7 +188,7 @@ export function ClaimForm({ onSubmit, isProcessing }: ClaimFormProps) {
 
         <Button
           type="submit"
-          className="w-full h-10 font-medium bg-gradient-to-b from-[oklch(0.40_0.14_250)] to-[oklch(0.33_0.12_255)] hover:from-[oklch(0.38_0.14_250)] hover:to-[oklch(0.30_0.12_255)] shadow-sm"
+          className="w-full h-11 font-semibold rounded-full bg-[#ed7766] hover:bg-[#e5624f] text-white shadow-[0_2px_6px_rgba(237,119,102,0.3)] hover:shadow-[0_4px_12px_rgba(237,119,102,0.35)] transition-all"
           disabled={isProcessing}
         >
           {isProcessing ? (
