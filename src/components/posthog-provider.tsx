@@ -1,36 +1,53 @@
 "use client";
 
 import posthog from "posthog-js";
-import { PostHogProvider as PHProvider } from "posthog-js/react";
-import { useEffect, type ReactNode } from "react";
+import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
+import { Suspense, useEffect, type ReactNode } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
+/**
+ * Provides PostHog React context to the component tree.
+ * Initialization happens in instrumentation-client.ts (runs before hydration).
+ * Includes automatic $pageview tracking on client-side navigations.
+ */
 export function PostHogProvider({ children }: { children: ReactNode }) {
+  return (
+    <PHProvider client={posthog}>
+      <SuspendedPostHogPageView />
+      {children}
+    </PHProvider>
+  );
+}
+
+/**
+ * Tracks $pageview on every client-side route change.
+ * Uses usePathname + useSearchParams to detect Next.js App Router navigations.
+ */
+function PostHogPageView() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const ph = usePostHog();
+
   useEffect(() => {
-    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;
-
-    if (key && host) {
-      posthog.init(key, {
-        api_host: host,
-        capture_pageview: true,
-        capture_pageleave: true,
-        persistence: "localStorage",
-      });
-
-      const params = new URLSearchParams(window.location.search);
-      if (params.has("ph_internal")) {
-        posthog.register({ is_internal: true });
+    if (pathname && ph) {
+      let url = window.origin + pathname;
+      const params = searchParams.toString();
+      if (params) {
+        url = url + "?" + params;
       }
-      if (params.has("ph_optout")) {
-        posthog.opt_out_capturing();
-      }
-      if (params.has("ph_optin")) {
-        posthog.opt_in_capturing();
-      }
+      ph.capture("$pageview", { $current_url: url });
     }
-  }, []);
+  }, [pathname, searchParams, ph]);
 
-  return <PHProvider client={posthog}>{children}</PHProvider>;
+  return null;
+}
+
+function SuspendedPostHogPageView() {
+  return (
+    <Suspense fallback={null}>
+      <PostHogPageView />
+    </Suspense>
+  );
 }
 
 // Helper to track events safely (no-op if PostHog not initialized)
