@@ -16,6 +16,17 @@ export function PostHogProvider({ children }: { children: ReactNode }) {
         capture_pageleave: true,
         persistence: "localStorage",
       });
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("ph_internal")) {
+        posthog.register({ is_internal: true });
+      }
+      if (params.has("ph_optout")) {
+        posthog.opt_out_capturing();
+      }
+      if (params.has("ph_optin")) {
+        posthog.opt_in_capturing();
+      }
     }
   }, []);
 
